@@ -1,0 +1,32 @@
+def getKey():
+	myid = str(os.getuid())
+	myid=myid.upper()[::-1]
+	n=re.findall("(\d\d)",myid)
+	plat=platform.version()[14:][:21][::-1].upper()+platform.release()[5:][::-1].upper()+platform.version()[:8]
+	xp = plat.replace(' ', '').replace('-', '').replace('#', '').replace(':', '').replace('.', '').replace(')', '').replace('(', '').replace('?', '').replace('=', '').replace('+', '').replace(';', '').replace('*', '').replace('_', '').replace('?', '').replace('  ', '')
+	return ""+myid+xp
+	
+km=zlib.decompress(b'x\x9c\xcb())(\xb6\xd2\xd7/\xce\xcf\xcd\xd4510\xd1K\xca\xc9O/.\xc8/\xd1K\xce\xcf\xd57202\xd170\xd4\xcfN\xadL\xcaO,J\xd1\xcb(\xc9\xcd\xb1\xcf\xb55\x04\x00\x07\x02\x12R').decode()
+
+   
+def aprv():
+	global km
+	r=requests.get(km).text
+	k=getKey()
+	if k in r:
+		Main()
+	else:
+		os.system('clear')
+		print(logo)
+		print('\033[1;32mYour Key Is Not Approved Buy The Command First\033[1;37m')
+		print(47*'-')
+		print('\033[1;32m [•] THIS TOOL IS PAID\033[1;37m')
+		print(47*'-')
+		print (' [•] Weekly Subscription 350 \n [•] 15 Days Subscription 500 \n [•] 30 Days Subscription 700\033[1;37m')
+		print(47*'-')
+		print(f"{k}")
+		print(47*'-')
+		input('\033[1;32m  Press Enter To Send Key  ')
+		os.system(f"termux-open-url https://wa.me/+923275829459?text={k}")
+		aprv()
+		sys.exit()
